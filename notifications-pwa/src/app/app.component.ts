@@ -12,7 +12,7 @@ enum NotificationStatus {
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
-  key: any;
+  key: string = '';
   isSubscribed = false;
   notStatus = NotificationStatus;
   notificationsStatus: NotificationStatus = NotificationStatus.DISABLED;
@@ -26,9 +26,11 @@ export class AppComponent implements OnInit {
 
   subscribe() {
     this.key = this.notificationsService.key;
+    console.log(this.key);
+
     this.swPush
       .requestSubscription({
-        serverPublicKey: this.notificationsService.key,
+        serverPublicKey: this.key,
       })
       .then((subscription) => {
         console.log(subscription);

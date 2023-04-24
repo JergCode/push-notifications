@@ -24,9 +24,7 @@ export class NotificationsService {
       })
       .subscribe({
         next: (resp) => {
-          this.key = resp.key;
-          this.unit8Key = this.urlB64ToUint8Array(resp.key);
-          console.log(this.unit8Key);
+          this.key = window.atob(resp.key);
         },
         error: (error) => {
           console.log(error);
