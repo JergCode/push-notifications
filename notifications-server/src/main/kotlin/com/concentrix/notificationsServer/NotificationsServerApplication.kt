@@ -1,5 +1,6 @@
 package com.concentrix.notificationsServer
 
+import kotlinx.coroutines.runBlocking
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.scheduling.annotation.EnableScheduling
@@ -9,5 +10,5 @@ import org.springframework.scheduling.annotation.EnableScheduling
 class NotificationsServerApplication
 
 fun main(args: Array<String>) {
-	runApplication<NotificationsServerApplication>(*args)
+    runApplication<NotificationsServerApplication>(*args)
 }

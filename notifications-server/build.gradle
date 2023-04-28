@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id 'org.springframework.boot' version '2.7.10'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-    id 'org.jetbrains.kotlin.jvm' version '1.6.21'
-    id 'org.jetbrains.kotlin.plugin.spring' version '1.6.21'
+    id "org.jetbrains.kotlin.jvm" version "1.8.20"
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.8.20'
 }
 
 group = 'com.concentrix'
@@ -17,9 +17,13 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
-    implementation group: 'nl.martijndwars', name: 'web-push', version: '5.1.1'
-    implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.70'
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0-RC")
+
     implementation 'com.zerodeplibs:zerodep-web-push-java:2.1.1'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

@@ -1,18 +1,12 @@
 package com.concentrix.notificationsServer.controllers
 
+import com.concentrix.notificationsServer.models.Notification
 import com.concentrix.notificationsServer.models.PublicKey
 import com.concentrix.notificationsServer.services.MessagingService
 import com.zerodeplibs.webpush.PushSubscription
-import nl.martijndwars.webpush.Subscription
-import org.asynchttpclient.util.HttpConstants.ResponseStatusCodes
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseStatus
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/")
@@ -38,6 +32,15 @@ class MessagesController {
         messagingService.sendNotifications()
     }
 
+    @PostMapping("/sendNotification/{user}")
+    fun sendNotificationToUser(
+        @PathVariable(value = "user") userId: Long?,
+        @RequestBody notification: Notification
+    ): ResponseEntity<String> {
+        return userId?.let {
+             messagingService.sendNotificationForUser(userId, notification)
+        } ?: ResponseEntity.badRequest().build()
+    }
 }
 
 

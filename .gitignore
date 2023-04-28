@@ -5,6 +5,8 @@
 */tmp
 */out-tsc
 */bazel-out
+**/docker/.data/db/*
+**/docker/.data/**/*
 
 # Node
 */node_modules
