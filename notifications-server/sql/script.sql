@@ -95,6 +95,6 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 INSERT INTO `notifications`.`NOTIFICATION_TYPES` (`type`)
-    VALUES ("advertaicing"), ("promotions"), ("offer"), ("new arrivals");
+    VALUES ("advertising"), ("promotions"), ("offer"), ("new arrivals");
 
 
