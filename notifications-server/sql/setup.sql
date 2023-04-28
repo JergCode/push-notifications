@@ -93,8 +93,28 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-
+-- -----------------------------------------------------
+-- Populates `NOTIFICATION_TYPES`
+-- -----------------------------------------------------
 INSERT INTO `notifications`.`NOTIFICATION_TYPES` (`type`)
     VALUES ("advertising"), ("promotions"), ("offer"), ("new arrivals");
 
+-- -----------------------------------------------------
+-- Populates `USERS`
+-- -----------------------------------------------------
+INSERT INTO notifications.USERS (`name`, last_name, email)
+	VALUES 	("Jose", "Ramirez", "jose@email.com"), 
+			    ("John", "Doe", "john@email.com"),
+          ("Jennifer", "Smith", "jenny@email.com");
 
+-- -----------------------------------------------------
+-- Populates `NOTIFICATIONS_ALLOWED`
+-- -----------------------------------------------------
+INSERT INTO notifications.NOTIFICATIONS_ALLOWED (user_id, notification_type_id)
+	VALUES 	(1, 1), 
+			    (1, 2),
+          (1, 3),
+          (2, 1),
+          (2, 3),
+          (3, 3),
+          (3, 4);
