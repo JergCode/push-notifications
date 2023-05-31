@@ -10,6 +10,7 @@ const notificationsServer = axios.create({
 });
 
 async function regSw() {
+  console.log({ navigator });
   if ("serviceWorker" in navigator) {
     const url = "/sw.js";
     const reg = await navigator.serviceWorker.register(url, { scope: "/" });
